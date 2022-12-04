@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+        <script type="text/javascript" src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script>
+            let dataList = "{{priceList}}"
+            console.log(dataList);
+            $(document).ready(function () {
+                var table = $('#pricesWatches').DataTable({
+                    columnDefs: [
+                        {
+                            targets: -1,
+                            data: null,
+                            defaultContent: '<button>Delete</button>',
+                        },
+                    ],
+                    columns: [
+                        null,
+                        null,
+                        { orderable: false, searchable: false }
+                    ],
+                });
+
+                $('#pricesWatches tbody').on('click', 'button', function () {
+                    var data = table.row($(this).parents('tr')).data();
+                    console.log(data[1])
+                    $.post("/delete", 
+                        { 'URL': data[1] },
+                            function(data, status){
+                                alert("Successfully deleted.");
+                                location.reload();
+                            })
+                            .fail(function(response) {
+                                alert("Error deleting: ", response)
+                            });
+                });
+            });
+        </script>
+    </head>
+<body>
+
+<h1>Current Price Watches</h1>
+{% block content %}
+<table id="pricesWatches" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Store</th>
+            <th>URL</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in watch_list %}
+          <tr>
+            <td>{{ item[1] }}</td>
+            <td><a href="{{ item[0] }}">{{ item[0] }}</a></td>
+            <td></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+</table> 
+{% endblock %}
+
+<form action = "http://127.0.0.1:5000/add" method = "GET"> 
+    <p><input type = "submit" value = "Add New" /></p>
+ </form>
+</body>
+</html>

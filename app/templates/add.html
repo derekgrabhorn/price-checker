@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+<script type="text/javascript" language="javascript">
+    function redirect()
+    {
+        window.location.href="index.html";
+    }
+</script>
+<body>
+
+<h1>Add Price Watch</h1>
+<form action="http://127.0.0.1:5000/add" method="POST">
+    <p>URL<input type="text" name="URL"/></p>
+    <label for="store-name">Store</label>
+      <select name="Store" id="store-name">
+        <option value="Costco">Costco</option>
+      </select>
+    <p><input type="submit" value="Add" onclick="redirect();"/></p>
+ </form>
+
+</body>
+</html>
