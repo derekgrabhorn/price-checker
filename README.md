@@ -4,8 +4,8 @@ This simple Flask application is a price checking tool to check Costco.com for a
 
 # env variables
 
-ACCESS_KEY_ID
-SECRET_ACCESS_KEY
-AWS_REGION
-TO_EMAIL=Destination email
-FROM_EMAIL=Email that has been registered and approved through SES (AWS)
+ACCESS_KEY_ID  
+SECRET_ACCESS_KEY  
+AWS_REGION  
+TO_EMAIL=Destination email  
+FROM_EMAIL=Email that has been registered and approved through SES (AWS)  
