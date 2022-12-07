@@ -4,12 +4,11 @@
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-        <script type="text/javascript" src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script>
             let dataList = "{{priceList}}"
-            console.log(dataList);
             $(document).ready(function () {
                 var table = $('#pricesWatches').DataTable({
                     columnDefs: [
@@ -46,7 +45,7 @@
 
 <h1>Current Price Watches</h1>
 {% block content %}
-<table id="pricesWatches" class="table table-striped">
+<table id="pricesWatches" class="display">
     <thead>
         <tr>
             <th>Store</th>
